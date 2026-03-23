@@ -1,0 +1,141 @@
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Radio as RadioIcon, Send, Globe, MapPin, Music, Phone } from 'lucide-react';
+
+export default function Radio() {
+  return (
+    <div className="space-y-8 animate-in fade-in duration-500">
+      <div className="border-b border-red-900/30 pb-6">
+        <h1 className="text-3xl font-bold text-white mb-2">Radio Requests</h1>
+        <p className="text-neutral-400">Guide to requesting songs on local and international radio stations to boost airplay points.</p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 space-y-8">
+          {/* Why Radio Matters */}
+          <Card className="bg-gradient-to-br from-neutral-900 to-neutral-950 border-red-900/50">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-red-400">
+                <RadioIcon className="w-5 h-5" />
+                Why Radio Airplay Matters
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-neutral-300">
+              <p>
+                Radio airplay is a crucial component for major charts, especially the <strong>Billboard Hot 100</strong> and <strong>UK Official Charts</strong>. It also contributes to the "Broadcast" score on Korean music shows (though that is usually limited to the network's own radio stations).
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                <div className="p-4 rounded-lg bg-neutral-950 border border-neutral-800">
+                  <h4 className="font-bold text-white mb-2">US Radio (Billboard)</h4>
+                  <p className="text-sm">Accounts for roughly 30-40% of Hot 100 points. Pop radio (Top 40) is the primary target for K-pop releases.</p>
+                </div>
+                <div className="p-4 rounded-lg bg-neutral-950 border border-neutral-800">
+                  <h4 className="font-bold text-white mb-2">Korean Radio (Music Shows)</h4>
+                  <p className="text-sm">Plays on SBS Power FM count for Inkigayo. Plays on MBC FM4U count for Music Core.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* How to Request */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Send className="w-5 h-5 text-red-500" />
+                How to Request Effectively
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-red-900/50 flex items-center justify-center text-red-400 font-bold">1</div>
+                <div>
+                  <h4 className="font-bold text-white text-lg">Be Polite and Personal</h4>
+                  <p className="text-sm text-neutral-400 mt-1">DJs ignore copy-pasted spam. Write a genuine message about why you love the song and why their listeners would enjoy it.</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-red-900/50 flex items-center justify-center text-red-400 font-bold">2</div>
+                <div>
+                  <h4 className="font-bold text-white text-lg">Use the Right Channels</h4>
+                  <p className="text-sm text-neutral-400 mt-1">Most stations prefer Twitter (X), WhatsApp, or their official website request forms. Tag the station and the specific DJ currently on air.</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-red-900/50 flex items-center justify-center text-red-400 font-bold">3</div>
+                <div>
+                  <h4 className="font-bold text-white text-lg">Timing is Everything</h4>
+                  <p className="text-sm text-neutral-400 mt-1">Request during high-traffic hours (morning/evening commutes) or during specific request hours (e.g., "Most Requested Live").</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-red-900/50 flex items-center justify-center text-red-400 font-bold">4</div>
+                <div>
+                  <h4 className="font-bold text-white text-lg">Shazam While Playing</h4>
+                  <p className="text-sm text-neutral-400 mt-1">If the song plays, Shazam it immediately! Radio stations monitor local Shazam data to see if listeners are interested in what's playing.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="space-y-8">
+          {/* Target Stations */}
+          <Card>
+            <CardHeader className="bg-red-950/30 border-b border-red-900/50">
+              <CardTitle className="flex items-center gap-2 text-red-400">
+                <Globe className="w-5 h-5" />
+                Key US Stations
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6 space-y-4">
+              {[
+                { name: 'SiriusXM Hits 1', handle: '@SiriusXMHits1', type: 'National' },
+                { name: 'Z100 New York', handle: '@Z100NewYork', type: 'Local (NY)' },
+                { name: '102.7 KIIS FM', handle: '@1027KIISFM', type: 'Local (LA)' },
+                { name: 'Most Requested Live', handle: '@MostRequestLive', type: 'Syndicated (Sat)' },
+              ].map((station, i) => (
+                <div key={i} className="p-3 rounded-lg bg-neutral-950 border border-neutral-800 flex justify-between items-center">
+                  <div>
+                    <div className="font-bold text-white text-sm">{station.name}</div>
+                    <div className="text-xs text-red-400">{station.handle}</div>
+                  </div>
+                  <span className="text-[10px] uppercase tracking-wider font-bold text-neutral-500 bg-neutral-900 px-2 py-1 rounded">
+                    {station.type}
+                  </span>
+                </div>
+              ))}
+              <a href="#" className="block w-full text-center py-2 mt-4 text-sm font-medium text-neutral-400 hover:text-white transition-colors border border-neutral-800 rounded-lg hover:bg-neutral-800">
+                View Full Station List (CSV)
+              </a>
+            </CardContent>
+          </Card>
+
+          {/* Request Templates */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Music className="w-5 h-5 text-red-500" />
+                Sample Templates
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="p-4 rounded-lg bg-neutral-950 border border-neutral-800 relative group">
+                <p className="text-sm text-neutral-300 italic">
+                  "Hi @[StationHandle]! I'm loving the morning show today. Could you please play [Song Title] by [Artist]? It's the perfect upbeat track for my commute! Thanks! 🎵🚗"
+                </p>
+              </div>
+              <div className="p-4 rounded-lg bg-neutral-950 border border-neutral-800 relative group">
+                <p className="text-sm text-neutral-300 italic">
+                  "Hey @[DJHandle] on @[StationHandle]! I'd love to request [Song Title] by [Artist]. It just dropped and the beat is incredible. Would love to hear it on air! 🔥"
+                </p>
+              </div>
+              <p className="text-xs text-red-400 font-medium text-center mt-2">
+                * Always customize these templates! Do not copy exactly.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
